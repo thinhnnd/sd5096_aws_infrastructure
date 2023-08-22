@@ -1,7 +1,16 @@
-resource "aws_ecr_repository" "ecr_repository" {
-  name = "practical-devops-erc"
+resource "aws_ecr_repository" "ecr_backend_repository" {
+  name = "backend"
   tags = {
-    Name        = "practical-devops-erc"
+    Name        = "backend"
+    Project     = "Pratical DevOps"
+    Environment = "TEST"
+  }
+}
+
+resource "aws_ecr_repository" "ecr_frontend_repository" {
+  name = "frontend"
+  tags = {
+    Name        = "frontend"
     Project     = "Pratical DevOps"
     Environment = "TEST"
   }
