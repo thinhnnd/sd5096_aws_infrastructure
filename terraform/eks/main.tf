@@ -18,6 +18,17 @@ module "eks" {
     disk_size = 50
   }
 
+  node_security_group_additional_rules = {
+    egress_self_all = {
+      description = "Node to any hop all ports/protocols"
+      protocol    = "-1"
+      from_port   = 0
+      to_port     = 0
+      type        = "egress"
+      cidr_blocks = ["0.0.0.0/0"] # Allow all outbound traffic
+    }
+  }
+
   eks_managed_node_groups = {
     spot = {
       desired_size = 1
